@@ -13,6 +13,7 @@
                 @dragleave.prevent.stop="" @drop="is_dragover = false" @drop.prevent.stop="upload($event)">
                 <h5>Drop your files here</h5>
             </div>
+            <input type="file" multiple @change="upload($event)" />
             <hr class="my-6" />
             <!-- Progess Bars -->
             <div class="mb-4" v-for="upload in uploads" :key="upload.name">
@@ -30,9 +31,10 @@
     </div>
 </template>
 <script>
-import { storage, auth, songsCollection} from '@/includes/firebase'
+import { storage, auth, songsCollection } from '@/includes/firebase'
 export default {
     name: "Upload",
+    props: ['addSong'],
     data() {
         return {
             is_dragover: false,
@@ -42,7 +44,9 @@ export default {
     methods: {
         upload($event) {
             this.is_dragover = false;
-            const files = [...$event.dataTransfer.files];//spread to convert obj to arr
+            const files = $event.dataTransfer ?
+                [...$event.dataTransfer.files] :
+                [...$event.target.files];//spread to convert obj to arr
             files.forEach((file) => {
                 if (file.type !== 'audio/mpeg') {
                     return;
@@ -78,14 +82,25 @@ export default {
 
                         }
                         song.url = await task.snapshot.ref.getDownloadURL();
-                        await songsCollection.add(song);
-
+                        const songRef = await songsCollection.add(song);
+                        const songSnapshot= await songRef.get();
+                        this.addSong(songSnapshot);
                         this.uploads[uploadIndex].variant = 'bg-green-400';
                         this.uploads[uploadIndex].icon = 'fas fa-check';
                         this.uploads[uploadIndex].text_class = 'text-green-400';
                     });
             })
+        },
+        cancelUploads() {
+            this.uploads.forEach((upload) => {
+                upload.task.cancel();
+            })
         }
-    }
+    },
+    // beforeUnmount() {
+    //     this.uploads.forEach((upload) => {
+    //         upload.task.cancel();
+    //     })
+    // }
 }
 </script> 
