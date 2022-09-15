@@ -11,8 +11,10 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@cypress/schema-tools": "^4.7.9",
     "@vee-validate/rules": "^4.6.6",
     "firebase": "^8.10.1",
+    "howler": "^2.2.3",
     "pinia": "^2.0.16",
     "vee-validate": "^4.5.8",
     "vue": "^3.2.37",
