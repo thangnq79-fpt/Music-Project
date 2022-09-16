@@ -1,0 +1,41 @@
+{
+    "home": {
+        "listen": "Thưởng thức âm nhạc tuyệt vời!"
+    },
+    "song": {
+        "comment_count": "Không bình luận | 1 bình luận |{count} bình luận",
+        "submit": "Gửi",
+        "latest": "Mới nhất",
+        "oldest": "Cũ nhất",
+        "cmt_placeholder": "Bình luận ở đây..."
+    },
+    "register": {
+        "accept": "Tôi đồng ý với {0}",
+        "tos": "Điều khoản của nhà cung cấp",
+        "name": "Tên",
+        "age": "Tuổi",
+        "password": "Mật khẩu",
+        "confirm_password": "Xác nhận mật khẩu",
+        "country": "Đất nước",
+        "submit": "Gửi"
+    },
+    "auth": {
+        "your_account": "Tài khoản của bạn",
+        "login": "Đăng nhập",
+        "register": "Đăng kí",
+        "about": "Về chúng tôi",
+        "manage": "Quản lí",
+        "logout": "Đăng xuất"
+    },
+    "compositionItem": {
+        "songTitle": "Tên bài hát",
+        "genre": "Thể loại",
+        "submit": "Gửi",
+        "back": "Quay về",
+        "mySong": "Bài hát của tôi"
+    },
+    "upload": {
+        "upload": "Tải lên",
+        "upFile": "Thả bài hát của bạn ở đây"
+    }
+}

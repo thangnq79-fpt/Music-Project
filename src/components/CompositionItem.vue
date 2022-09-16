@@ -16,25 +16,25 @@
                 {{ alert_message }}</div>
             <vee-form :validation-schema="schema" :initial-values="song" @submit="edit">
                 <div class="mb-3">
-                    <label class="inline-block mb-2">Song Title</label>
+                    <label class="inline-block mb-2">{{$t("compositionItem.songTitle")}}</label>
                     <vee-field type="text" name="modified_name"
                         class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                         placeholder="Enter Song Title" @input="updateUnsavedFlag(true)" />
                     <ErrorMessage class="text-red-600" name="modified_name" />
                 </div>
                 <div class="mb-3">
-                    <label class="inline-block mb-2">Genre</label>
+                    <label class="inline-block mb-2">{{$t("compositionItem.genre")}}</label>
                     <vee-field type="text" name="genre"
                         class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                         placeholder="Enter Genre" @input="updateUnsavedFlag(true)" />
                     <ErrorMessage class="text-red-600" name="genre" />
                 </div>
-                <button type="submit" class="py-1.5 px-3 rounded text-white bg-green-600" :disabled="in_submission">
-                    Submit
+                <button type="submit" class="py-1.5 px-3 mr-4 rounded text-white bg-green-600" :disabled="in_submission">
+                    {{$t("compositionItem.submit")}}
                 </button>
                 <button type="button" class="py-1.5 px-3 rounded text-white bg-gray-600" :disabled="in_submission"
                     @click.prevent="showForm = false">
-                    Go Back
+                    {{$t("compositionItem.back")}}
                 </button>
             </vee-form>
         </div>

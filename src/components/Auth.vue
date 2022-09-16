@@ -15,7 +15,7 @@
         <div class="py-4 text-left px-6">
           <!--Title-->
           <div class="flex justify-between items-center pb-4">
-            <p class="text-2xl font-bold">Your Account</p>
+            <p class="text-2xl font-bold">{{$t("auth.your_account")}}</p>
             <!-- Modal Close Button -->
             <div class="modal-close cursor-pointer z-50" @click="modalVisibility = false">
               <i class="fas fa-times"></i>
@@ -28,13 +28,13 @@
               <a class="block rounded py-3 px-4 transition" href="#" @click.prevent="tab = 'login'" :class="{
                 'hover:text-white text-white bg-blue-600': tab === 'login',
                 'hover:text-blue-600': tab === 'register',
-              }">Login</a>
+              }">{{$t("auth.login")}}</a>
             </li>
             <li class="flex-auto text-center">
               <a class="block rounded py-3 px-4 transition" href="#" @click.prevent="tab = 'register'" :class="{
                 'hover:text-white text-white bg-blue-600': tab === 'register',
                 'hover:text-blue-600': tab === 'login',
-              }">Register</a>
+              }">{{$t("auth.register")}}</a>
             </li>
           </ul>
           <app-login-form v-if="tab === 'login'"/>
