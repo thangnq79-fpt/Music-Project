@@ -3,6 +3,7 @@ import "firebase/firestore";
 import "firebase/auth";
 import "firebase/database";
 import "firebase/storage";
+
 const firebaseConfig = {
   apiKey: "AIzaSyA6sQvD2ouPV1lMaFxkI4qKbiVHrBxUbqA",
   authDomain: "music-app-49381.firebaseapp.com",
@@ -19,6 +20,11 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
 const storage = firebase.storage();
+
+db.enablePersistence().catch((err) => {
+  console.warn(`Firebase persistence error ${error.code}`);
+});
+
 const usersCollection = db.collection("users");
 const songsCollection = db.collection("songs");
 const commentsCollection = db.collection("comments");

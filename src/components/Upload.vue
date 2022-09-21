@@ -51,6 +51,19 @@ export default {
                 if (file.type !== 'audio/mpeg') {
                     return;
                 }
+
+                if (!navigator.onLine) {
+                    this.uploads.push({
+                        task: {},
+                        current_progress: 100,
+                        name: file.name,
+                        variant: 'bg-red-400',
+                        icon: 'fas fa-times',
+                        text_class: 'text-red-400',
+                    })
+                    return;
+                }
+
                 const storageRef = storage.ref();
                 const songsRef = storageRef.child(`songs/${file.name}`);//music-app-49381.appspot.com/songs/...
                 const task = songsRef.put(file)
@@ -83,7 +96,7 @@ export default {
                         }
                         song.url = await task.snapshot.ref.getDownloadURL();
                         const songRef = await songsCollection.add(song);
-                        const songSnapshot= await songRef.get();
+                        const songSnapshot = await songRef.get();
                         this.addSong(songSnapshot);
                         this.uploads[uploadIndex].variant = 'bg-green-400';
                         this.uploads[uploadIndex].icon = 'fas fa-check';
